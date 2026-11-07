@@ -27,8 +27,8 @@ export function Journal() {
       </div>
 
       <ul className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-12 sm:items-end sm:gap-5">
-        {posts.map((p) => (
-          <li key={p.href} className={cn("reveal", p.span)}>
+        {posts.map((p, i) => (
+          <li key={p.href} className={cn(i === 0 ? "reveal" : "lift", p.span)}>
             <a href={p.href} target="_blank" rel="noopener noreferrer" className="group block">
               <div className="relative overflow-hidden rounded-[var(--radius-card)]">
                 <MediaFrame

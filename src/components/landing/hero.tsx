@@ -6,7 +6,7 @@ import { WhatsAppButton } from "@/components/brand/contact-buttons";
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-ink">
+    <section aria-labelledby="hero-title" className="sticky top-0 isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-ink">
       {/*
         Fotografia em plano inteiro: fundo total <1024 px; ≥1024 px ocupa a metade direita
         (até 640 px, para manter ~2× com o original de 1200 px) e funde-se no preto à esquerda.
@@ -25,7 +25,7 @@ export function Hero() {
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-ink)_8%,rgba(14,15,17,0.55)_45%,rgba(14,15,17,0.1)_75%)] lg:bg-[linear-gradient(to_right,var(--color-ink)_0%,rgba(14,15,17,0.35)_35%,transparent_70%),linear-gradient(to_top,var(--color-ink)_0%,transparent_30%)]" />
       </div>
 
-      <div className="mx-auto w-full max-w-[88rem] px-4 pb-12 pt-40 sm:px-8 lg:px-12 lg:pb-20">
+      <div className="hero-out mx-auto w-full max-w-[88rem] px-4 pb-12 pt-40 sm:px-8 lg:px-12 lg:pb-20">
         <p className="animate-fade font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-bone-dim">
           Personal trainer · {site.location}
         </p>

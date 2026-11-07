@@ -21,7 +21,7 @@ export function Section({
       id={id}
       aria-labelledby={id ? `${id}-title` : undefined}
       className={cn(
-        "relative overflow-x-clip px-4 py-24 sm:px-8 lg:px-12 lg:py-32",
+        "relative z-10 overflow-x-clip px-4 py-24 sm:px-8 lg:px-12 lg:py-32",
         tone === "bone" && "bg-concrete text-ink",
         tone === "dark" && "bg-ink text-bone",
         tone === "raised" && "bg-ink-2 text-bone",

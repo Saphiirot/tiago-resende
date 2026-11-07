@@ -35,7 +35,7 @@ export function Approach() {
           {principles.map((p, i) => (
             <li
               key={p.word}
-              className="reveal group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 gap-y-4 border-b border-line py-9 sm:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.1fr)] sm:gap-x-8"
+              className="focus-row group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 gap-y-4 border-b border-line py-9 sm:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.1fr)] sm:gap-x-8"
             >
               <span className="pt-2 font-mono text-xs text-bronze">0{i + 1}</span>
               <h3 className="display text-d3 text-bone transition-colors duration-300 group-hover:text-bronze-bright">{p.word}</h3>

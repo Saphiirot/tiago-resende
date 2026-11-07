@@ -17,7 +17,7 @@ export function Coaching() {
       <ol className="relative mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-5 lg:gap-8">
         <span aria-hidden className="draw-x absolute left-0 right-0 top-[1.1875rem] hidden h-px bg-bronze/60 lg:block" />
         {method.steps.map((s, i) => (
-          <li key={s.title} className="reveal relative">
+          <li key={s.title} style={{ "--i": i } as React.CSSProperties} className="reveal-step relative">
             <span className="relative z-10 grid size-10 place-items-center rounded-full border border-line-strong bg-ink font-mono text-xs text-bronze">
               0{i + 1}
             </span>

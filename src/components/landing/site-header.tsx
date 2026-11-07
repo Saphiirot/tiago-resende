@@ -17,12 +17,23 @@ const links = [
 export function SiteHeader({ whatsapp }: { whatsapp: React.ReactNode }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const els = links.map((l) => document.querySelector(l.href)).filter((e): e is Element => !!e);
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -52,7 +63,11 @@ export function SiteHeader({ whatsapp }: { whatsapp: React.ReactNode }) {
           <ul className="flex items-center gap-6 text-sm text-bone-dim xl:gap-8">
             {links.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-bone">
+                <a
+                  href={l.href}
+                  aria-current={active === l.href ? "location" : undefined}
+                  className={cn("border-b pb-1 transition-colors hover:text-bone", active === l.href ? "border-bronze text-bone" : "border-transparent")}
+                >
                   {l.label}
                 </a>
               </li>

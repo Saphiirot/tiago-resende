@@ -3,6 +3,7 @@ import { WhatsAppButton } from "@/components/brand/contact-buttons";
 import { SiteHeader } from "@/components/landing/site-header";
 import { Hero } from "@/components/landing/hero";
 import { About } from "@/components/landing/about";
+import { ScrollBand } from "@/components/landing/scroll-band";
 import { Approach } from "@/components/landing/approach";
 import { Coaching } from "@/components/landing/coaching";
 import { Plans } from "@/components/landing/plans";
@@ -25,6 +26,7 @@ export default function HomePage() {
       <main id="conteudo">
         <Hero />
         <About />
+        <ScrollBand />
         <Approach />
         <Coaching />
         <Plans />

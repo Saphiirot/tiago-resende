@@ -257,6 +257,64 @@
   }
 }
 
+/* Movimento v3b — ligação entre secções */
+@keyframes fade-out-up {
+  to { opacity: 0; transform: translateY(-48px) scale(0.98); }
+}
+@keyframes focus-row {
+  0%, 100% { opacity: 0.28; }
+  45%, 55% { opacity: 1; }
+}
+@keyframes lift {
+  from { transform: translateY(14vh); }
+  to { transform: translateY(-6vh); }
+}
+@keyframes slide-x {
+  from { transform: translateX(4%); }
+  to { transform: translateX(-38%); }
+}
+
+/* O conteúdo do hero esvanece-se enquanto a secção seguinte o cobre. */
+@utility hero-out {
+  @supports (animation-timeline: scroll()) {
+    animation: fade-out-up linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 85vh;
+  }
+}
+/* Linha da lista que está no centro do ecrã fica a 100 %, as outras apagam-se. */
+@utility focus-row {
+  @supports (animation-timeline: view()) {
+    animation: focus-row linear both;
+    animation-timeline: view();
+    animation-range: cover;
+  }
+}
+/* Cartão que sobe mais depressa do que o scroll (profundidade). */
+@utility lift {
+  @supports (animation-timeline: view()) {
+    animation: lift linear both;
+    animation-timeline: view();
+    animation-range: cover;
+  }
+}
+/* Texto que corre na horizontal com o scroll. */
+@utility slide-x {
+  @supports (animation-timeline: view()) {
+    animation: slide-x linear both;
+    animation-timeline: view();
+    animation-range: cover;
+  }
+}
+/* Entrada em sequência (definir --i em cada item). */
+@utility reveal-step {
+  @supports (animation-timeline: view()) {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry calc(0% + var(--i, 0) * 7%) entry calc(40% + var(--i, 0) * 7%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
