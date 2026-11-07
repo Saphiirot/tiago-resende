@@ -6,7 +6,7 @@ import { InstagramIcon } from "@/components/brand/icons";
 export function FinalCta() {
   return (
     <section aria-labelledby="contacto-title" id="contacto" className="grain relative overflow-hidden bg-bronze px-4 py-24 text-ink sm:px-8 lg:px-12 lg:py-36">
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_90%_at_90%_0%,rgba(255,226,196,0.35),transparent_60%),radial-gradient(60%_80%_at_0%_100%,rgba(60,32,12,0.35),transparent_60%)]" />
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_90%_at_90%_0%,rgba(232,245,255,0.4),transparent_60%),radial-gradient(60%_80%_at_0%_100%,rgba(10,30,52,0.3),transparent_60%)]" />
       <div aria-hidden className="plate-dark absolute inset-y-0 right-0 hidden w-1/3 [mask-image:linear-gradient(to_left,black,transparent)] lg:block" />
       <div className="relative z-10 mx-auto grid max-w-[88rem] grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-8">

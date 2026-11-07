@@ -26,10 +26,10 @@
   --color-bone-dim: #b5b3ae;
   --color-mute: #929599;
 
-  /* Acento — pele sob luz quente */
-  --color-bronze: #cf8a4f;
-  --color-bronze-bright: #e3a46e;
-  --color-bronze-deep: #8a5426;
+  /* Acento — azul-gelo (v3: contraste frio com a pele quente das fotografias; o nome "bronze" mantém-se por compatibilidade) */
+  --color-bronze: #9fc3e6;
+  --color-bronze-bright: #c6dff5;
+  --color-bronze-deep: #2c5d8c;
 
   /* Complementares observados: vermelho dos equipamentos, azul-aço do vestuário */
   --color-oxide: #e5594b;
@@ -42,14 +42,14 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Escala tipográfica display (responsiva) */
-  --text-hero: clamp(4.25rem, 11vw, 11.75rem);
-  --text-hero--line-height: 0.84;
-  --text-d1: clamp(3rem, 6.4vw, 6.25rem);
-  --text-d1--line-height: 0.86;
-  --text-d2: clamp(2.5rem, 4.4vw, 4.5rem);
-  --text-d2--line-height: 0.88;
-  --text-d3: clamp(1.875rem, 2.6vw, 2.75rem);
-  --text-d3--line-height: 0.92;
+  --text-hero: clamp(3.25rem, 8.6vw, 9rem);
+  --text-hero--line-height: 0.95;
+  --text-d1: clamp(2.5rem, 5.2vw, 5rem);
+  --text-d1--line-height: 0.98;
+  --text-d2: clamp(2.125rem, 3.6vw, 3.75rem);
+  --text-d2--line-height: 1;
+  --text-d3: clamp(1.5rem, 2.1vw, 2.25rem);
+  --text-d3--line-height: 1.02;
 
   --radius-card: 1.25rem;
   --radius-media: 1.75rem;
@@ -122,14 +122,14 @@
   }
 }
 
+/* v3: grotesca larga em minúsculas (antes: condensada em maiúsculas). */
 @utility display {
   font-family: var(--font-display);
-  font-stretch: 62%;
-  font-variation-settings: "wdth" 62;
-  font-weight: 800;
-  text-transform: uppercase;
-  line-height: 0.86;
-  letter-spacing: -0.01em;
+  font-stretch: 118%;
+  font-variation-settings: "wdth" 118;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 @utility display-wide {
@@ -200,6 +200,60 @@
     animation: rise linear both;
     animation-timeline: view();
     animation-range: entry 5% entry 45%;
+  }
+}
+
+/* Movimento v3 — tudo por CSS (scroll-driven), sem JavaScript; em navegadores sem suporte o conteúdo fica estático. */
+@keyframes kenburns {
+  from { transform: scale(1.14); }
+  to { transform: scale(1); }
+}
+@keyframes parallax-y {
+  to { transform: translateY(9%); }
+}
+@keyframes img-in {
+  from { clip-path: inset(10% 7% 10% 7% round 1.75rem); transform: scale(0.96); }
+  to { clip-path: inset(0 0 0 0 round 1.75rem); transform: none; }
+}
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes progress-x {
+  to { transform: scaleX(1); }
+}
+
+@utility kenburns {
+  animation: kenburns 2.6s var(--ease-out-expo) both;
+}
+@utility parallax {
+  @supports (animation-timeline: scroll()) {
+    animation: parallax-y linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100vh;
+  }
+}
+@utility reveal-img {
+  @supports (animation-timeline: view()) {
+    animation: img-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+@utility draw-x {
+  transform-origin: left;
+  @supports (animation-timeline: view()) {
+    animation: draw-x linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+}
+@utility scroll-progress {
+  transform-origin: left;
+  transform: scaleX(0);
+  @supports (animation-timeline: scroll()) {
+    animation: progress-x linear both;
+    animation-timeline: scroll(root);
   }
 }
 

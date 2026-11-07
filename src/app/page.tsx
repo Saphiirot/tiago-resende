@@ -15,6 +15,7 @@ import { SiteFooter } from "@/components/landing/site-footer";
 export default function HomePage() {
   return (
     <>
+      <div aria-hidden className="scroll-progress fixed inset-x-0 top-0 z-[60] h-0.5 bg-bronze" />
       {site.prototype.showReviewNotes ? (
         <p className="border-b border-line bg-ink-2 px-4 py-2 text-center font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mute">
           Protótipo · conteúdos em validação

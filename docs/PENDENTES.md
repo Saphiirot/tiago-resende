@@ -6,7 +6,7 @@ Atualizado a 2026-10-21 (Fase 05). Cada item tem **um** sítio de configuração
 
 | # | Item | Estado | Onde se configura | Impacto atual |
 | --- | --- | --- | --- | --- |
-| 1 | **Número de WhatsApp profissional** | Pendente | `site.whatsapp.number` (`src/config/site.ts`) | Em todos os pontos de contacto, o botão aparece como estado “WhatsApp · por configurar”: sem ligação, sem papel de botão, com o Instagram como alternativa. |
+| 1 | **Número de WhatsApp profissional** | **Configurado** (+351 912 086 476, indicado pelo responsável do projeto; confirmar com o Tiago que é o profissional) | `site.whatsapp.number` (`src/config/site.ts`) | Em todos os pontos de contacto, o botão aparece como estado “WhatsApp · por configurar”: sem ligação, sem papel de botão, com o Instagram como alternativa. |
 | 2 | Formação e certificações | Pendente | `site.credentials` | Bloco “A confirmar” na secção 01. Nada é afirmado. |
 | 3 | Experiência profissional (anos, contextos) | Pendente | Texto da secção 01 (`about.tsx`) | Não é mencionada. |
 | 4 | Modalidades: presencial / online, local, disponibilidade e condições | **Por validar** (dependem das necessidades e da localização) | `modalities` (`src/config/commercial.ts`) | Secção 04 e FAQ mostram cada modalidade com a etiqueta “Por validar”. |

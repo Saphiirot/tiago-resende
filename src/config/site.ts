@@ -23,12 +23,11 @@ export const site = {
 
   whatsapp: {
     /**
-     * PENDENTE: nenhum número profissional foi publicado nas referências
-     * acessíveis. Preencher no formato internacional, só dígitos
-     * (ex.: "351XXXXXXXXX"). Enquanto estiver vazio, o botão de WhatsApp
-     * é apresentado em estado "por configurar" e nunca gera uma ligação.
+     * Número indicado pelo responsável do projeto (2026-11-07): +351 912 086 476.
+     * Formato internacional, só dígitos. Se ficar vazio, o botão passa ao estado
+     * "por configurar" e nunca gera uma ligação.
      */
-    number: "",
+    number: "351912086476",
     defaultMessage:
       "Olá Tiago! Vi o teu site e gostava de saber mais sobre o acompanhamento.",
   },

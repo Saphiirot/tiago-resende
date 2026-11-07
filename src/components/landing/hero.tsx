@@ -11,7 +11,7 @@ export function Hero() {
         Fotografia em plano inteiro: fundo total <1024 px; ≥1024 px ocupa a metade direita
         (até 640 px, para manter ~2× com o original de 1200 px) e funde-se no preto à esquerda.
       */}
-      <div className="absolute inset-0 -z-10 animate-fade lg:left-auto lg:w-[44%] lg:max-w-[40rem]">
+      <div className="parallax absolute inset-0 -z-10 animate-fade lg:left-auto lg:w-[44%] lg:max-w-[40rem]">
         <Image
           src={media.hero.src}
           alt={media.hero.alt}
@@ -19,7 +19,7 @@ export function Hero() {
           priority
           quality={90}
           sizes="(min-width: 1456px) 640px, (min-width: 1024px) 44vw, 100vw"
-          className="object-cover"
+          className="kenburns object-cover"
           style={{ objectPosition: media.hero.focus }}
         />
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-ink)_8%,rgba(14,15,17,0.55)_45%,rgba(14,15,17,0.1)_75%)] lg:bg-[linear-gradient(to_right,var(--color-ink)_0%,rgba(14,15,17,0.35)_35%,transparent_70%),linear-gradient(to_top,var(--color-ink)_0%,transparent_30%)]" />
@@ -31,8 +31,8 @@ export function Hero() {
         </p>
 
         <h1 id="hero-title" className="mt-6">
-          <span className="display block animate-rise text-[clamp(4.25rem,16.5vw,10rem)] text-bone lg:text-[11vw] xl:text-hero">Construído</span>
-          <span className="editorial -mt-1 block animate-rise pl-[0.06em] text-[clamp(3.1rem,11vw,6.75rem)] leading-[0.95] text-bronze [animation-delay:90ms] lg:text-[7.4vw] xl:text-[clamp(3.1rem,7.4vw,7.75rem)]">
+          <span className="display block animate-rise text-[clamp(3rem,14vw,7rem)] text-bone lg:text-[8vw] xl:text-hero">Construído</span>
+          <span className="editorial -mt-1 block animate-rise pl-[0.06em] text-[clamp(2.9rem,13.5vw,6.5rem)] leading-[0.95] text-bronze [animation-delay:90ms] lg:text-[7vw] xl:text-[clamp(3.1rem,7vw,7.5rem)]">
             no silêncio.
           </span>
         </h1>
