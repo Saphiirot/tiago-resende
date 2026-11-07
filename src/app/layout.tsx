@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { site } from "@/config/site";
+import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -32,6 +33,9 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  applicationName: site.name,
+  icons: { apple: "/icons/apple-touch-icon.png" },
+  appleWebApp: { capable: true, title: site.name, statusBarStyle: "black-translucent" },
 };
 
 export const viewport: Viewport = {
@@ -46,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} ${geist.variable} ${geistMono.variable} ${instrument.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <PwaRegister />
         <a
           href="#conteudo"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-bone focus:px-4 focus:py-2 focus:text-ink"

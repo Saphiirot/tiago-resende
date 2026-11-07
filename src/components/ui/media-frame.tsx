@@ -58,7 +58,7 @@ export function MediaFrame({
             className={cn(
               "absolute inset-0",
               tone === "warm"
-                ? "bg-[radial-gradient(90%_70%_at_68%_28%,rgba(159,195,230,0.20),transparent_60%),radial-gradient(70%_90%_at_0%_10%,rgba(143,165,187,0.12),transparent_55%),linear-gradient(180deg,#1f2327_0%,#121417_100%)]"
+                ? "bg-[radial-gradient(90%_70%_at_68%_28%,rgba(207,138,79,0.20),transparent_60%),radial-gradient(70%_90%_at_0%_10%,rgba(143,165,187,0.12),transparent_55%),linear-gradient(180deg,#1f2327_0%,#121417_100%)]"
                 : "bg-[radial-gradient(90%_70%_at_30%_20%,rgba(143,165,187,0.18),transparent_60%),linear-gradient(180deg,#1d2125_0%,#111316_100%)]",
             )}
           />

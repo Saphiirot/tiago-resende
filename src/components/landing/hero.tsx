@@ -31,8 +31,8 @@ export function Hero() {
         </p>
 
         <h1 id="hero-title" className="mt-6">
-          <span className="display block animate-rise text-[clamp(3rem,14vw,7rem)] text-bone lg:text-[8vw] xl:text-hero">Construído</span>
-          <span className="editorial -mt-1 block animate-rise pl-[0.06em] text-[clamp(2.9rem,13.5vw,6.5rem)] leading-[0.95] text-bronze [animation-delay:90ms] lg:text-[7vw] xl:text-[clamp(3.1rem,7vw,7.5rem)]">
+          <span className="display block animate-rise text-[clamp(4.25rem,16.5vw,10rem)] text-bone lg:text-[11vw] xl:text-hero">Construído</span>
+          <span className="editorial -mt-1 block animate-rise pl-[0.06em] text-[clamp(3.1rem,11vw,6.75rem)] leading-[0.95] text-bronze [animation-delay:90ms] lg:text-[7.4vw] xl:text-[clamp(3.1rem,7.4vw,7.75rem)]">
             no silêncio.
           </span>
         </h1>

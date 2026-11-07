@@ -21,7 +21,7 @@ export function Coaching() {
             <span className="relative z-10 grid size-10 place-items-center rounded-full border border-line-strong bg-ink font-mono text-xs text-bronze">
               0{i + 1}
             </span>
-            <h3 className="display mt-6 text-d3 text-bone lg:text-[clamp(1.125rem,1.5vw,1.5rem)] lg:break-words">{s.title}</h3>
+            <h3 className="display mt-6 text-d3 text-bone lg:text-[clamp(1.5rem,2.1vw,2.25rem)]">{s.title}</h3>
             <p className="mt-3 max-w-xs text-[0.9375rem] leading-relaxed text-bone-dim">{s.detail}</p>
           </li>
         ))}
@@ -55,7 +55,7 @@ function AppPreview() {
   ];
   return (
     <figure className="relative">
-      <div aria-hidden className="absolute -inset-10 -z-10 bg-[radial-gradient(55%_55%_at_60%_45%,rgba(159,195,230,0.14),transparent_70%)]" />
+      <div aria-hidden className="absolute -inset-10 -z-10 bg-[radial-gradient(55%_55%_at_60%_45%,rgba(207,138,79,0.14),transparent_70%)]" />
       <div className="overflow-hidden rounded-[var(--radius-media)] border border-line-strong bg-ink shadow-[var(--shadow-lift)]" aria-hidden>
         <div className="flex items-center justify-between border-b border-line px-6 py-4">
           <span className="flex items-center gap-2.5">

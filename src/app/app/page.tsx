@@ -56,7 +56,7 @@ export default function ClientDashboard() {
 
         {nextWorkout && nextWorkoutSession ? (
           <div className="relative overflow-hidden p-6 sm:p-8 lg:p-10">
-            <div aria-hidden className="absolute inset-0 bg-[radial-gradient(80%_100%_at_0%_0%,rgba(159,195,230,0.16),transparent_60%)]" />
+            <div aria-hidden className="absolute inset-0 bg-[radial-gradient(80%_100%_at_0%_0%,rgba(207,138,79,0.16),transparent_60%)]" />
             <div className="relative flex h-full flex-col">
               <p className="flex items-start gap-2 text-sm text-bronze-bright">
                 <EventMarker kind="treino" className="mt-[0.3rem] border-bronze" />
