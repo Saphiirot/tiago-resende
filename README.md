@@ -1,6 +1,6 @@
 # Tiago Resende — Fitness Coaching Platform
 
-**Protótipo navegável (Fase 06).** Website público com conteúdo e fotografias reais autorizadas; área de cliente e painel do treinador com dados fictícios. **Sem autenticação, base de dados ou persistência.**
+**Protótipo navegável (Fase 06).** Website público com conteúdo e fotografias reais autorizadas; área de cliente e painel do treinador com dados fictícios. **Acesso de demonstração (email e palavra-passe fictícios partilhados) à área de cliente e ao painel; sem utilizadores reais, base de dados ou persistência.**
 
 ## Arrancar
 
@@ -14,6 +14,10 @@ npm run lint
 > **Nota de desenvolvimento:** neste projeto, alterações aos tokens `@theme` em `src/app/globals.css` — e, por vezes, classes Tailwind novas — nem sempre são recarregadas pelo `next dev` (cache em disco do Turbopack com `@tailwindcss/turbopack`). Se uma alteração de CSS não aparecer: parar o servidor, apagar `.next/dev` e voltar a arrancar. A build de produção não é afetada.
 
 Stack: Next.js 16.4 (App Router, Cache Components, Turbopack) · React 19.3 · TypeScript · Tailwind CSS 4 · lucide-react.
+
+## Acesso de demonstração
+
+`/app/*` e `/admin/*` exigem sessão (`src/proxy.ts`). O email de demonstração e a verificação da palavra-passe estão em `src/lib/demo-auth.ts`; a palavra-passe não está no repositório. Sessão: cookie `httpOnly`, 12 h; `/sair` termina-a. Não há limite de tentativas nem utilizadores: serve só para apresentar o protótipo.
 
 ## Rotas
 
@@ -49,7 +53,7 @@ docs/                     análise do Instagram, direção visual, segurança, p
 
 | Funciona (demonstração) | Não funciona (por desenho) |
 | --- | --- |
-| Navegação completa entre todos os ecrãs | Autenticação e controlo de acesso |
+| Navegação completa entre todos os ecrãs | Autenticação real e controlo de acesso por utilizador |
 | Calendário mês/semana, filtros de vídeos, separadores do plano alimentar | Guardar, criar, editar ou eliminar qualquer dado |
 | Validação visual e estados de carregamento nos logins e formulários | Upload, armazenamento e streaming de vídeo |
 | Responsivo (375 px → desktop), teclado, `prefers-reduced-motion` | Sincronização de calendário, reservas, notificações, emails, pagamentos |

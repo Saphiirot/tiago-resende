@@ -90,7 +90,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="mt-8">
-        <ButtonLink href="/login" variant="secondary" icon={<LogOut aria-hidden className="size-4" />}>Sair do protótipo</ButtonLink>
+        <ButtonLink href="/sair" variant="secondary" icon={<LogOut aria-hidden className="size-4" />}>Sair do protótipo</ButtonLink>
       </div>
     </>
   );

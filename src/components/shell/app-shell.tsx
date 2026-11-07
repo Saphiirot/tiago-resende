@@ -24,7 +24,7 @@ export function AppShell({ area, user, children }: { area: ShellArea; user: Shel
   const pathname = usePathname();
   const [moreOpen, setMoreOpen] = useState(false);
   const accent = area === "cliente" ? "text-bronze-bright" : "text-bone";
-  const exitHref = area === "cliente" ? "/login" : "/admin/login";
+  const exitHref = area === "cliente" ? "/sair" : "/sair?area=admin";
 
   // Fecha a folha "Mais" sempre que a rota muda.
   const [lastPath, setLastPath] = useState(pathname);

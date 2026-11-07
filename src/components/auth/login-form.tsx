@@ -1,20 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Eye, EyeOff, FlaskConical, LoaderCircle } from "lucide-react";
 import { Field, TextInput } from "@/components/ui/form";
-import { Button, buttonClasses } from "@/components/ui/button";
-import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/button";
+import { entrar } from "@/lib/auth-actions";
 
 type Errors = Partial<Record<"email" | "password" | "code", string>>;
 
 /**
- * Formulário de início de sessão EXCLUSIVAMENTE VISUAL.
- * - Não envia dados para nenhum servidor (sem `action`, sem fetch).
- * - Não guarda nada no navegador (sem cookies, localStorage ou sessionStorage).
- * - Limpa a palavra-passe após a submissão de demonstração.
- * A autenticação real deverá ser validada no servidor — ver docs/ARQUITETURA-SEGURANCA.md.
+ * Formulário de início de sessão do protótipo. A verificação é feita no servidor (`entrar`),
+ * com credenciais de demonstração — ver src/lib/demo-auth.ts. Nada é guardado no navegador
+ * além do cookie de sessão httpOnly.
  */
 export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
   const [email, setEmail] = useState("");
@@ -22,9 +19,9 @@ export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
   const [code, setCode] = useState("");
   const [show, setShow] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [state, setState] = useState<"idle" | "loading" | "done">("idle");
+  const [state, setState] = useState<"idle" | "loading">("idle");
+  const [formError, setFormError] = useState("");
   const isAdmin = variant === "treinador";
-  const prototypeHref = isAdmin ? "/admin" : "/app";
 
   function validate(): Errors {
     const e: Errors = {};
@@ -46,11 +43,13 @@ export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
       return;
     }
     setState("loading");
-    setTimeout(() => {
+    setFormError("");
+    entrar(variant, email, password).then((res) => {
+      // Sem erro, o servidor redireciona; só chega aqui se as credenciais falharem.
+      setFormError(res?.error ?? "");
       setPassword("");
-      setCode("");
-      setState("done");
-    }, 1100);
+      setState("idle");
+    });
   }
 
   return (
@@ -61,7 +60,7 @@ export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
             id={`${variant}-email`}
             type="email"
             inputMode="email"
-            autoComplete="off"
+            autoComplete="username"
             placeholder={isAdmin ? "treinador@dominio.pt" : "o.teu@email.pt"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -75,7 +74,7 @@ export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
             <TextInput
               id={`${variant}-password`}
               type={show ? "text" : "password"}
-              autoComplete="off"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               invalid={!!errors.password}
@@ -129,20 +128,12 @@ export function LoginForm({ variant }: { variant: "cliente" | "treinador" }) {
       </form>
 
       <div aria-live="polite">
-        {state === "done" ? (
-          <div className="mt-6 rounded-xl border border-dashed border-line-strong bg-ink-3/60 p-4 text-sm">
-            <p className="font-medium text-bone">Autenticação ainda não implementada.</p>
-            <p className="mt-1 text-bone-dim">Nenhum dado foi enviado nem guardado. Podes continuar a navegar pelo protótipo.</p>
-            <Link href={prototypeHref} className={cn(buttonClasses({ variant: "secondary", size: "sm" }), "mt-4")}>
-              Continuar para o protótipo <ArrowRight aria-hidden className="size-4" />
-            </Link>
-          </div>
-        ) : null}
+        {formError ? <p className="mt-4 text-sm text-oxide">{formError}</p> : null}
       </div>
 
       <p id={`${variant}-aviso`} className="mt-8 flex items-start gap-2 text-xs leading-relaxed text-mute">
         <FlaskConical aria-hidden className="mt-0.5 size-3.5 shrink-0 text-bone-dim" />
-        Ecrã de demonstração: a validação é apenas visual e nenhuma credencial é verificada ou armazenada.
+        Acesso de demonstração ao protótipo: dados fictícios, sem pagamentos nem dados pessoais reais.
       </p>
     </div>
   );
