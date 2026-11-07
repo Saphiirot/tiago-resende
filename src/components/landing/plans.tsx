@@ -15,63 +15,64 @@ const price = new Intl.NumberFormat("pt-PT", { style: "currency", currency: "EUR
 export function Plans() {
   return (
     <Section id="planos" label="Modalidades e planos" tone="bone">
-      <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-5">
-          <SectionTitle id="planos-title">Formato e valores.</SectionTitle>
-          <p className="reveal mt-8 max-w-sm text-lg leading-relaxed text-ink/80">
-            A modalidade depende das tuas necessidades e da tua localização — é um dos pontos da conversa inicial.
-          </p>
-        </div>
-
-        <div className="lg:col-span-7 lg:col-start-6 lg:mt-3">
-          <ul className="border-t border-ink/15">
-            {modalities.map((m) => (
-              <li key={m.id} className="reveal grid grid-cols-1 gap-x-8 gap-y-3 border-b border-ink/15 py-8 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-                <h3 className="display flex flex-wrap items-center gap-x-4 gap-y-2 text-d3 text-ink">
-                  {m.title}
-                  {m.status !== "confirmado" ? <StatusChip>{m.status === "por-validar" ? "Por validar" : "Pendente"}</StatusChip> : null}
-                </h3>
-                <p className="text-[0.9375rem] leading-relaxed text-ink/75 sm:pt-1.5">{m.detail}</p>
-              </li>
-            ))}
-          </ul>
-
-          {plans.length > 0 ? (
-            <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {plans.map((p) => (
-                <li key={p.name}>
-                  <PlanCard plan={p} />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className="reveal mt-12">
-              <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/70">Planos e valores</p>
-              <p className="mt-3 max-w-lg text-[1.0625rem] leading-relaxed text-ink">
-                Ainda não estão publicados. Para saber valores e disponibilidade, pede informação diretamente ao Tiago.
-              </p>
-              <div className="mt-7 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-                <WhatsAppButton variant="dark" label="Pedir informação" />
-                <InstagramDmLink />
-              </div>
-              <LandingPending tone="light" title="Planos, preços e condições" className="mt-10">
-                Campos previstos: nome do plano, modalidade, preço, periodicidade, o que inclui, condições e chamada para
-                ação. Configurar em <code className="font-mono text-xs">plans</code> (src/config/commercial.ts) só com
-                valores indicados pelo Tiago.
-              </LandingPending>
-            </div>
-          )}
-        </div>
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionTitle id="planos-title">Formato e valores.</SectionTitle>
+        <p className="reveal max-w-sm text-lg leading-relaxed text-ink/80">
+          A modalidade depende das tuas necessidades e da tua localização — é um dos pontos da conversa inicial.
+        </p>
       </div>
-    </Section>
-  );
-}
 
-function StatusChip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border border-dashed border-ink/35 px-2.5 py-1 font-mono text-[0.625rem] font-normal uppercase tracking-[0.14em] text-ink/70">
-      {children}
-    </span>
+      {/* Painéis divididos: em ecrãs largos o que tem o rato por cima expande-se. */}
+      <ul className="mt-14 flex flex-col gap-4 lg:h-[26rem] lg:flex-row">
+        {modalities.map((m, i) => (
+          <li
+            key={m.id}
+            className="group relative flex min-h-[16rem] flex-1 flex-col justify-between overflow-hidden rounded-[var(--radius-media)] bg-ink p-7 text-bone transition-[flex-grow] duration-700 ease-[var(--ease-out-expo)] lg:p-10 lg:hover:flex-[1.5]"
+          >
+            <span aria-hidden className="display absolute -bottom-10 -right-2 text-[clamp(10rem,18vw,18rem)] leading-none text-transparent [-webkit-text-stroke:1px_var(--color-line-strong)] transition-transform duration-700 group-hover:-translate-y-3">
+              {i === 0 ? "A" : "B"}
+            </span>
+            {m.status !== "confirmado" ? (
+              <span className="relative w-fit rounded-full border border-dashed border-bone/40 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-bone-dim">
+                {m.status === "por-validar" ? "Por validar" : "Pendente"}
+              </span>
+            ) : <span />}
+            <div className="relative">
+              <h3 className="display text-d1">{m.title}</h3>
+              <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-bone-dim">{m.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {plans.length > 0 ? (
+        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {plans.map((p) => (
+            <li key={p.name}>
+              <PlanCard plan={p} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="reveal mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/70">Planos e valores</p>
+            <p className="mt-3 max-w-lg text-[1.0625rem] leading-relaxed text-ink">
+              Ainda não estão publicados. Para saber valores e disponibilidade, pede informação diretamente ao Tiago.
+            </p>
+            <div className="mt-7 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+              <WhatsAppButton variant="dark" label="Pedir informação" />
+              <InstagramDmLink />
+            </div>
+          </div>
+          <LandingPending tone="light" title="Planos, preços e condições" className="lg:col-span-6 lg:self-start">
+            Campos previstos: nome do plano, modalidade, preço, periodicidade, o que inclui, condições e chamada para
+            ação. Configurar em <code className="font-mono text-xs">plans</code> (src/config/commercial.ts) só com
+            valores indicados pelo Tiago.
+          </LandingPending>
+        </div>
+      )}
+    </Section>
   );
 }
 

@@ -315,6 +315,27 @@
   }
 }
 
+/* GSAP: texto escondido até o JS o animar; se o JS falhar, aparece ao fim de 2,5 s. */
+@keyframes m-show {
+  to { opacity: 1; }
+}
+.m-hide {
+  opacity: 0;
+  animation: m-show 0.01s 2.5s forwards;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

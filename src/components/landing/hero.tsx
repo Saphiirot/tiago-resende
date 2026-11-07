@@ -26,23 +26,23 @@ export function Hero() {
       </div>
 
       <div className="hero-out mx-auto w-full max-w-[88rem] px-4 pb-12 pt-40 sm:px-8 lg:px-12 lg:pb-20">
-        <p className="animate-fade font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-bone-dim">
+        <p data-m="hero-in" className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-bone-dim">
           Personal trainer · {site.location}
         </p>
 
-        <h1 id="hero-title" className="mt-6">
-          <span className="display block animate-rise text-[clamp(4.25rem,16.5vw,10rem)] text-bone lg:text-[11vw] xl:text-hero">Construído</span>
-          <span className="editorial -mt-1 block animate-rise pl-[0.06em] text-[clamp(3.1rem,11vw,6.75rem)] leading-[0.95] text-bronze [animation-delay:90ms] lg:text-[7.4vw] xl:text-[clamp(3.1rem,7.4vw,7.75rem)]">
+        <h1 id="hero-title" className="m-hide mt-6">
+          <span className="display block text-[clamp(4.25rem,16.5vw,10rem)] text-bone lg:text-[11vw] xl:text-hero">Construído</span>
+          <span className="editorial -mt-1 block pl-[0.06em] text-[clamp(3.1rem,11vw,6.75rem)] leading-[0.95] text-bronze lg:text-[7.4vw] xl:text-[clamp(3.1rem,7.4vw,7.75rem)]">
             no silêncio.
           </span>
         </h1>
 
-        <p className="mt-8 max-w-md animate-rise text-lg text-bone/85 [animation-delay:180ms] sm:text-xl">
+        <p data-m="hero-in" className="mt-8 max-w-md text-lg text-bone/85 sm:text-xl">
           Treino com direção. Acompanhamento com método.
         </p>
 
-        <div className="mt-10 flex animate-rise flex-col items-start gap-5 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-7">
-          <WhatsAppButton size="lg" label="Falar com o Tiago" />
+        <div data-m="hero-in" className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+          <span data-m="magnet" className="inline-block"><WhatsAppButton size="lg" label="Falar com o Tiago" /></span>
           <a href="#acompanhamento" className="group inline-flex items-center gap-2 text-sm font-medium text-bone underline decoration-bone/30 underline-offset-8 transition-colors hover:decoration-bronze">
             Como funciona
             <ArrowDown aria-hidden className="size-4 transition-transform group-hover:translate-y-0.5" />

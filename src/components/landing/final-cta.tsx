@@ -23,7 +23,7 @@ export function FinalCta() {
           </p>
           {/* WhatsApp é o contacto principal (mesmo por configurar); o Instagram fica como alternativa discreta. */}
           <div className="mt-8 flex flex-col items-start gap-5">
-            <WhatsAppButton size="lg" variant="dark" label="Falar com o Tiago" />
+            <span data-m="magnet" className="inline-block"><WhatsAppButton size="lg" variant="dark" label="Falar com o Tiago" /></span>
             <a
               href={site.instagram.dmUrl}
               target="_blank"

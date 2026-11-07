@@ -10,8 +10,8 @@ import { Section } from "./section";
 // Publicações reais do perfil, com capa do inventário (src/config/media.ts).
 // Só entram publicações cuja imagem pode ser usada; as restantes ficam no Instagram.
 const posts = [
-  { href: media.coverBackIsBuilt.source, type: "Reel", title: "Back is built. Not given.", cover: media.coverBackIsBuilt, video: true, aspect: "aspect-[3/4]", span: "sm:col-span-6" },
-  { href: media.coverMirror.source, type: "Publicação", title: "Construído no silêncio.", cover: media.coverMirror, video: false, aspect: "aspect-[4/5]", span: "sm:col-span-4 sm:col-start-8" },
+  { href: media.coverBackIsBuilt.source, type: "Reel", title: "Back is built. Not given.", cover: media.coverBackIsBuilt, video: true, aspect: "aspect-[3/4]", span: "sm:col-span-6", depth: "30" },
+  { href: media.coverMirror.source, type: "Publicação", title: "Construído no silêncio.", cover: media.coverMirror, video: false, aspect: "aspect-[4/5]", span: "sm:col-span-4 sm:col-start-8 sm:-mb-10", depth: "-50" },
 ];
 
 export function Journal() {
@@ -27,8 +27,8 @@ export function Journal() {
       </div>
 
       <ul className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-12 sm:items-end sm:gap-5">
-        {posts.map((p, i) => (
-          <li key={p.href} className={cn(i === 0 ? "reveal" : "lift", p.span)}>
+        {posts.map((p) => (
+          <li key={p.href} data-parallax={p.depth} className={p.span}>
             <a href={p.href} target="_blank" rel="noopener noreferrer" className="group block">
               <div className="relative overflow-hidden rounded-[var(--radius-card)]">
                 <MediaFrame

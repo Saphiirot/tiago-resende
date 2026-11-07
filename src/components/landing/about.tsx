@@ -12,22 +12,17 @@ export function About() {
         Sobre o Tiago Resende
       </h2>
 
-      <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-end lg:gap-10">
-        <figure className="reveal lg:col-span-5">
-          <MediaFrame
-            src={media.about.src}
-            alt={media.about.alt}
-            objectPosition={media.about.focus}
-            sizes="(min-width: 1024px) 38vw, 100vw"
-            className="aspect-[4/5] w-full rounded-[var(--radius-media)]"
-          />
-        </figure>
+      {/* Citação em largura total: as palavras acendem-se com o scroll. */}
+      <blockquote
+        data-m="words"
+        className="editorial max-w-5xl text-[clamp(2.4rem,6vw,5.5rem)] leading-[1.02] text-bone"
+      >
+        “O trabalho verdadeiro aconteceu todos os dias, quando ninguém estava a ver.”
+      </blockquote>
 
-        <div className="reveal lg:col-span-5 lg:col-start-8 lg:pb-4">
-          <blockquote className="editorial text-[clamp(2.1rem,3.6vw,3.5rem)] leading-[1.05] text-bone">
-            “O trabalho verdadeiro aconteceu todos os dias, quando ninguém estava a ver.”
-          </blockquote>
-          <p className="mt-10 max-w-md text-[1.0625rem] leading-relaxed text-bone-dim">
+      <div className="mt-20 grid grid-cols-1 gap-12 lg:mt-28 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-4 lg:col-start-2 lg:self-end lg:pb-6">
+          <p className="max-w-sm text-[1.0625rem] leading-relaxed text-bone-dim">
             Tiago Resende é personal trainer no {site.location}. No próprio treino segue a lógica do bodybuilding: semanas
             de consistência e atenção ao detalhe, da execução à proporção.
           </p>
@@ -48,6 +43,16 @@ export function About() {
             <p className="mt-10 text-sm text-bone-dim">{site.credentials.join(" · ")}</p>
           )}
         </div>
+
+        <figure data-parallax="40" className="lg:col-span-5 lg:col-start-7">
+          <MediaFrame
+            src={media.about.src}
+            alt={media.about.alt}
+            objectPosition={media.about.focus}
+            sizes="(min-width: 1024px) 38vw, 100vw"
+            className="aspect-[4/5] w-full rounded-[var(--radius-media)]"
+          />
+        </figure>
       </div>
     </Section>
   );

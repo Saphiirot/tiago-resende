@@ -1,5 +1,6 @@
 import { site } from "@/config/site";
 import { WhatsAppButton } from "@/components/brand/contact-buttons";
+import { LandingMotion } from "@/components/motion/landing-motion";
 import { SiteHeader } from "@/components/landing/site-header";
 import { Hero } from "@/components/landing/hero";
 import { About } from "@/components/landing/about";
@@ -22,6 +23,7 @@ export default function HomePage() {
           Protótipo · conteúdos em validação
         </p>
       ) : null}
+      <LandingMotion />
       <SiteHeader whatsapp={<WhatsAppButton size="sm" label="WhatsApp" showPendingHint={false} />} />
       <main id="conteudo">
         <Hero />
